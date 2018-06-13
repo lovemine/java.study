@@ -14,11 +14,11 @@ public class TcpClientWorker implements  Runnable{
     private String server;
     private int port;
     private int connectionTimeOut = 2000;
-    private int soTimeOut = 200000;
+    private int soTimeOut = 20000;
     private Socket socket = null;
     private boolean runnable = true;
-    private DataInput input = null;
-    private DataOutput output = null;
+    private DataInputStream input = null;
+    private DataOutputStream output = null;
     public TcpClientWorker(String ip, int port) {
         this.server = ip;
         this.port = port;
@@ -44,7 +44,7 @@ public class TcpClientWorker implements  Runnable{
             while(runnable) {
                 int messageLen = input.readInt();
                 int commandCode = input.readInt();
-                byte[] buffer = new byte[messageLen - 4];
+                byte[] buffer = new byte[messageLen - 8];
                 input.readFully(buffer);
                 IClientHandler handler = getHandler(commandCode);
                 handler.execute(input,output,buffer);
@@ -55,10 +55,10 @@ public class TcpClientWorker implements  Runnable{
         }finally {
             try {
                 if (input != null) {
-                    ((DataInputStream) input).close();
+                     input.close();
                 }
                 if (output != null) {
-                    ((DataOutputStream) output).close();
+                    output.close();
                 }
             }catch(Exception e) {}
         }
@@ -101,6 +101,8 @@ public class TcpClientWorker implements  Runnable{
             msg.commandCode = 100;
             msg.value = array;
             output.write(msg.makePacket());
+            output.flush();
+
         }catch(Exception ex) {
 
         }
@@ -112,6 +114,7 @@ public class TcpClientWorker implements  Runnable{
             msg.commandCode = 200;
             msg.value = val;
             output.write(msg.makePacket());
+            output.flush();
         }catch(Exception ex) {
 
         }

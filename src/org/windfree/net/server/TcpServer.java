@@ -24,8 +24,7 @@ public class TcpServer extends Thread{
             socket = new ServerSocket(this.port);
             while(this.running ){
                 Socket client = socket.accept();
-                client.setSoTimeout(1000);
-                client.setReuseAddress(true);
+
                 executor.execute(new TcpServerWorker(client));
 
             }

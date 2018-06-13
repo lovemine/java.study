@@ -1,12 +1,12 @@
 package org.windfree.net.client.handler;
 
-import java.io.DataInput;
-import java.io.DataOutput;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
 public class StringMessageClientHandler implements  IClientHandler{
     @Override
-    public void execute(DataInput in, DataOutput out, byte[] buffer) {
+    public void execute(DataInputStream in, DataOutputStream out, byte[] buffer) {
         String s = new String(buffer);
-        System.out.println(("I got replied message from Server."));
+        System.out.println(("I got replied message from Server:" + s));
     }
 }

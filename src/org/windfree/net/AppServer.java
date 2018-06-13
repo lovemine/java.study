@@ -2,7 +2,7 @@ package org.windfree.net;
 
 import org.windfree.net.server.TcpServer;
 
-public class App {
+public class AppServer {
     public static void main(String[] args) {
         TcpServer server = new TcpServer(7000);
         server.start();

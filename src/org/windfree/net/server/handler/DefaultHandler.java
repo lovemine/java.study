@@ -1,11 +1,11 @@
 package org.windfree.net.server.handler;
 
-import java.io.DataInput;
-import java.io.DataOutput;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
 public class DefaultHandler implements  IHandler{
     @Override
-    public void execute(byte[] buffer, DataInput in, DataOutput out) {
+    public void execute(DataInputStream in, DataOutputStream out, byte[] buffer) {
 
     }
 }

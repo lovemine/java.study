@@ -2,15 +2,15 @@ package org.windfree.net.server.handler;
 
 import org.windfree.net.message.StringMessage;
 
-import java.io.DataInput;
-import java.io.DataOutput;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
 public class ByteMessageHandler extends  Thread implements  IHandler {
     private byte[] buff;
-    private DataInput input;
-    private  DataOutput output;
+    private DataInputStream input;
+    private  DataOutputStream output;
     @Override
-    public void execute(DataInput in, DataOutput out, byte[] buffer) {
+    public void execute(DataInputStream in, DataOutputStream out, byte[] buffer) {
         this.buff = buffer;
         this.input = in;
         this.output = out;
@@ -28,6 +28,7 @@ public class ByteMessageHandler extends  Thread implements  IHandler {
             msg.commandCode = 200;
             msg.value = "I got your message.";
             output.write(msg.makePacket());
+            output.flush();
         }catch(Exception ex) {}
     }
 
