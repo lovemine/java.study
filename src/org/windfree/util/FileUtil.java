@@ -263,12 +263,29 @@ public class FileUtil {
         }
         return null;
     }
+
+    public static void printFile(String fileName ) {
+        String line = null;
+        try{
+            FileReader fileReader = new FileReader(fileName);
+            BufferedReader reader = new BufferedReader(fileReader);
+
+            while((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            reader.close();
+        }catch(Exception ex) {
+
+        }
+    }
+
     public static void main(String[] args) throws IOException {
-        String path = getJarLocation(FileUtil.class);
+        /*String path = getJarLocation(FileUtil.class);
+        System.out.println(path);*/
+        String path = System.getProperty("user.dir");
         System.out.println(path);
-        new File(path, "test.txt").createNewFile();
-        System.out.println(new File(path).canWrite());
-        System.out.println(new File(path).getAbsolutePath());
+        FileUtil.printFile(path + "/test.txt");
     }
 
     // public static void chmod777(File file) {
