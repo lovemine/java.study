@@ -87,13 +87,14 @@ public class ECUtil {
             // 암호화하여출력
             signature.update(textArr);
             byte[] signatureArr = signature.sign();
-            System.out.println("서명된 값: 0x" + (new BigInteger(1,signatureArr).toString(16)).toUpperCase());
+            System.out.println("서명된 값: 0x" + HexaUtil.byteArrayToHexString(signatureArr).toUpperCase());
 
 
             Signature signature2 = Signature.getInstance("DSA","SUN");
             signature2.initVerify(publicKey1);
             signature2.update(textArr);
             boolean result = signature2.verify(signatureArr);
+            //boolean result = signature2.verify(signatureArr);
             if(result) {
                 System.out.println("OK");
             } else {
