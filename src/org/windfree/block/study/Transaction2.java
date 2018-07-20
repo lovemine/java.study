@@ -66,16 +66,16 @@ public class Transaction2 {
         StringBuilder sb = new StringBuilder();
         sb.append("<signature>:").append(this.signature).append("\n");
         sb.append(this.timestamp).append(" ");
-        sb.append(CipherUtil.sha2562(this.receiver.toString())).append("->");
-        sb.append(CipherUtil.sha2562(this.sender.toString())).append("  amount:").append(this.amount);
+        sb.append(CipherUtil.sha2562(this.sender.toString())).append("->");
+        sb.append(CipherUtil.sha2562(this.receiver.toString())).append("  amount:").append(this.amount);
         return sb.toString();
     }
 
     public  String getData() {
         StringBuilder sb = new StringBuilder();
         sb.append(this.timestamp).append(" ");
-        sb.append(CipherUtil.sha2562(this.receiver.toString())).append("->");
-        sb.append(CipherUtil.sha2562(this.sender.toString())).append("  amount:").append(this.amount);
+        sb.append(CipherUtil.sha2562(this.sender.toString())).append("->");
+        sb.append(CipherUtil.sha2562(this.receiver.toString())).append("  amount:").append(this.amount);
         return sb.toString();
 
     }

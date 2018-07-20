@@ -84,7 +84,7 @@ public class Block2 {
         sb.append("채굴변수값:").append(getNonce()).append("\n");
         sb.append("트랜잭션 개수").append(txList.size()).append("\n");
         for(Transaction2 tx : txList) {
-            sb.append("트랜잭션 정보:").append(tx).append("\n");
+            sb.append("트랜잭션 정보:").append("\n").append(tx).append("\n");
         }
         sb.append("블록해시:").append(getBlockHash()).append("\n");
         return  sb.toString();
