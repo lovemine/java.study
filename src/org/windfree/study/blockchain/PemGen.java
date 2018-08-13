@@ -1,4 +1,4 @@
-package org.windfree.block.study;
+package org.windfree.study.blockchain;
 
 import org.windfree.util.ECUtil;
 
