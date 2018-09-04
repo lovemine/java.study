@@ -24,15 +24,15 @@ public class ECUtil {
         PrivateKey privateKey = keyPair.getPrivate();
         PublicKey publicKey = keyPair.getPublic();
 
-        PemUtil.write(privateKey,"DSA PRIVATE KEY",privateKeyName);
-        PemUtil.write(publicKey,"DSA PUBLIC KEY",publcKeyName);
+      //  PemUtil.write(privateKey,"DSA PRIVATE KEY",privateKeyName);
+     //   PemUtil.write(publicKey,"DSA PUBLIC KEY",publcKeyName);
     }
 
     public  static  PrivateKey readPrivateKey(String fileName) throws Exception {
         String data = readString(fileName);
         data = data.replaceAll("-----BEGIN DSA PRIVATE KEY-----", "");
         data = data.replaceAll("-----END DSA PRIVATE KEY-----", "");
-        // PEM 파일은 Base64로 인코딩 되어있으므로 디코딩해서 읽을 수 있도록 합니다.
+        // PEM �뙆�씪�� Base64濡� �씤肄붾뵫 �릺�뼱�엳�쑝誘�濡� �뵒肄붾뵫�빐�꽌 �씫�쓣 �닔 �엳�룄濡� �빀�땲�떎.
         //byte[] decoded = Base64Util.decode(data);
         byte[] decoded = Base64.decode(data);
         PKCS8EncodedKeySpec spec = new PKCS8EncodedKeySpec(decoded);
@@ -43,10 +43,10 @@ public class ECUtil {
 
     public  static PublicKey readPublicKey(String fineName) throws Exception {
         String data = readString(fineName);
-        // 불필요한 설명 구문을 제거합니다.
+        // 遺덊븘�슂�븳 �꽕紐� 援щЦ�쓣 �젣嫄고빀�땲�떎.
         data = data.replaceAll("-----BEGIN DSA PUBLIC KEY-----", "");
         data = data.replaceAll("-----END DSA PUBLIC KEY-----", "");
-        // PEM 파일은 Base64로 인코딩 되어있으므로 디코딩해서 읽을 수 있도록 합니다.
+        // PEM �뙆�씪�� Base64濡� �씤肄붾뵫 �릺�뼱�엳�쑝誘�濡� �뵒肄붾뵫�빐�꽌 �씫�쓣 �닔 �엳�룄濡� �빀�땲�떎.
         //byte[] decoded = Base64Util.decode(data);
         byte[] decoded = Base64.decode(data);
         X509EncodedKeySpec spec = new X509EncodedKeySpec(decoded);
@@ -80,14 +80,14 @@ public class ECUtil {
             Signature signature = Signature.getInstance("DSA","SUN");
             signature.initSign(privateKey1);
 
-            String text = "평문입니다.";
-            System.out.println("평문정보:" + text);
+            String text = "�룊臾몄엯�땲�떎.";
+            System.out.println("�룊臾몄젙蹂�:" + text);
             byte[] textArr = text.getBytes("UTF-8");
 
-            // 암호화하여출력
+            // �븫�샇�솕�븯�뿬異쒕젰
             signature.update(textArr);
             byte[] signatureArr = signature.sign();
-            System.out.println("서명된 값: 0x" + HexaUtil.byteArrayToHexString(signatureArr).toUpperCase());
+            System.out.println("�꽌紐낅맂 媛�: 0x" + HexaUtil.byteArrayToHexString(signatureArr).toUpperCase());
 
 
             Signature signature2 = Signature.getInstance("DSA","SUN");
