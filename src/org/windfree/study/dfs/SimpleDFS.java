@@ -25,7 +25,7 @@ class TreeNode {
         7   9
 
   answer:
-   [[5], [4,3], [1,2]]
+   [[5], [4,3], [1,2], [7,9]
 
    */
 public class SimpleDFS {
