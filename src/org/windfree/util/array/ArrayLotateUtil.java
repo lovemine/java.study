@@ -1,6 +1,6 @@
-package org.windfree.util;
+package org.windfree.util.array;
 
-public class ArrayLoateUtil {
+public class ArrayLotateUtil {
 	public  static void printArray(int[][] arr) {
 		int rowCount = arr.length;
 		int colCount = arr[0].length;

@@ -1,6 +1,9 @@
 package org.windfree.study.recursive;
-
-public class SimpleMiroo1 {
+/*
+ (0,0) 위치에서 춟발하여 (N-1, N-1) 까지 가는 path 를 찾는 문제.
+ 셀의 값이 1 인 곳은 벽이기 때문에 더이상 진행할 수 없음.
+ */
+public class findPath1 {
     private static final int PATH = 0;
     private static final int WALL = 1;
     private static final int VALID = 2;
