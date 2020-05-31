@@ -1,4 +1,4 @@
-package org.windfree.study.dfs;
+package org.windfree.study.bfs;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -28,7 +28,7 @@ class TreeNode {
    [[5], [4,3], [1,2], [7,9]
 
    */
-public class SimpleDFS {
+public class SimpleBFS {
     public static void main(String args[]) {
         TreeNode root = new TreeNode(5);
         root.left = new TreeNode(4);
@@ -37,7 +37,7 @@ public class SimpleDFS {
         root.left.right = new TreeNode(2);
         root.left.right.left = new TreeNode(7);
         root.left.right.right = new TreeNode(9);
-        SimpleDFS dfs = new SimpleDFS();
+        SimpleBFS dfs = new SimpleBFS();
         List<List<Integer>> answer = dfs.solve(root);
         System.out.println(answer);
 
