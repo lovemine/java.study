@@ -1,4 +1,4 @@
-package coding.test;
+package org.windfree.coding.test;
 
 import java.util.*;
 

@@ -1,9 +1,6 @@
-package coding.test;
+package org.windfree.coding.test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 class Interval implements  Comparable<Interval>{
     int start;

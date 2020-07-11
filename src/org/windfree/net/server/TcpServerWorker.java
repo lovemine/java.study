@@ -11,6 +11,7 @@ public class TcpServerWorker implements  Runnable{
     private Socket socket;
     private DataInputStream din;
     private DataOutputStream dout;
+
     public TcpServerWorker(Socket sock) {
         this.socket = sock;
         try {
@@ -18,6 +19,7 @@ public class TcpServerWorker implements  Runnable{
             this.socket.setReuseAddress(true);
             din = new DataInputStream(new BufferedInputStream(this.socket.getInputStream()));
             dout = new DataOutputStream(new BufferedOutputStream(this.socket.getOutputStream()));
+
         }catch(Exception ex){}
 
     }
@@ -36,6 +38,7 @@ public class TcpServerWorker implements  Runnable{
                 int commandCode = din.readInt();
                 byte[] buffer = new byte[messageLen - 8];
                 din.readFully(buffer);
+
                 IHandler handler = getHandler(commandCode);
                 handler.execute( din, dout, buffer);
             }
