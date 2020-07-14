@@ -370,7 +370,7 @@ public class FileUtil {
 
     }
 
-    public List<String> readFileLine(File file) {
+    public static List<String> readFileLine(File file) {
         List<String> list = new ArrayList<>();
         if(file.exists()) {
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
