@@ -30,7 +30,6 @@ public class TcpClient extends  Thread{
             return false;
         }
         return true;
-
     }
 
 
@@ -41,7 +40,7 @@ public class TcpClient extends  Thread{
             do {
                 msg = reader.readLine();
                 System.out.println(msg);
-            }while (!msg.equals("Quit"));
+            }while (!msg.equals("Quit")); // server 가 연결을 끊는 경우는 msq != null 로 체크
             System.out.println("close connection");
 
         } catch (IOException e) {

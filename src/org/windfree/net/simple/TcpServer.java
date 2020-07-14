@@ -55,6 +55,8 @@ public class TcpServer extends  Thread{
                     this.writer.newLine();
                     this.writer.write("this is a message2 from server");
                     this.writer.newLine();
+                    this.writer.write("this is a message3 from server");
+                    this.writer.newLine();
                     this.writer.write("Quit");
                     this.writer.newLine();
                     this.writer.flush();
