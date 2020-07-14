@@ -5,6 +5,8 @@ import java.net.DatagramSocket;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.channels.FileChannel;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 public class FileUtil {
@@ -367,4 +369,22 @@ public class FileUtil {
         }
 
     }
+
+    public List<String> readFileLine(File file) {
+        List<String> list = new ArrayList<>();
+        if(file.exists()) {
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                String line = null;
+                while((line = reader.readLine()) != null) {
+                    list.add(line);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return list;
+    }
+
 }
